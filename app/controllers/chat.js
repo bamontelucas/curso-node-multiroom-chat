@@ -11,5 +11,9 @@ module.exports.init = function(app, req, res) {
         return;
     }
 
-    res.render('chat');
+    app.get('io').emit('message', {
+        apelido: data.apelido,
+        message: 'acabou de entrar no chat'
+    });
+    res.render('chat', data);
 }
